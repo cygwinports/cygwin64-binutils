@@ -1,0 +1,3 @@
+category: Devel
+requires: libintl8 zlib0
+sdesc: "Binutils for Cygwin x86_64 toolchain"
