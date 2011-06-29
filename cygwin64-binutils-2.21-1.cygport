@@ -9,7 +9,9 @@ case ${PV[3]} in
 	SRC_URI="mirror://sourceware/binutils/snapshots/binutils-${PV}.tar.bz2" ;;
 *)	SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.bz2" ;;
 esac
-PATCH_URI="config-rpath.patch"
+
+PATCH_URI="config-rpath.patch
+           2.21-cygwin64.patch"
 
 CYGCONF_ARGS="--enable-multilib"
 
