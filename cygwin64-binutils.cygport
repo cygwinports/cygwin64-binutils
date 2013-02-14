@@ -1,0 +1,32 @@
+TOOLCHAIN_TARGET="x86_64-pc-cygwin"
+inherit toolchain
+
+NAME="cygwin64-binutils"
+VERSION=20130213
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Binutils for Cygwin x86_64 toolchain"
+HOMEPAGE="http://www.gnu.org/software/binutils/"
+SRC_DIR="binutils-${VERSION}"
+case ${VERSION} in
+20[1-9][0-9][01][0-9][0-3][0-9])
+	SRC_URI="mirror://sourceware/binutils/snapshots/binutils.tar.bz2"
+	SRC_DIR="binutils-";;
+*.*.[5-9][0-9])
+	SRC_URI="mirror://sourceware/binutils/snapshots/binutils-${VERSION}.tar.bz2" ;;
+*)	SRC_URI="mirror://gnu/binutils/binutils-${VERSION}.tar.bz2" ;;
+esac
+PATCH_URI="
+	ftp://cygwin.com/pub/cygwin/64bit/x86_64-pc-cygwin-binutils-20130213.patch
+	config-rpath.patch
+"
+
+CYGCONF_ARGS="--enable-multilib --enable-64-bit-bfd"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	# conflicts with native binutils
+	rm -fr ${D}/usr/lib/ ${D}/usr/share/{info,locale}/
+}
