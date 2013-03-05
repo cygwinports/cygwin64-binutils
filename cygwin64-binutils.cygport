@@ -2,7 +2,7 @@ TOOLCHAIN_TARGET="x86_64-pc-cygwin"
 inherit toolchain
 
 NAME="cygwin64-binutils"
-VERSION=20130225
+VERSION=20130304
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Binutils for Cygwin 64bit toolchain"
@@ -17,7 +17,7 @@ case ${VERSION} in
 *)	SRC_URI="mirror://gnu/binutils/binutils-${VERSION}.tar.bz2" ;;
 esac
 PATCH_URI="
-	ftp://cygwin.com/pub/cygwin/64bit/x86_64-pc-cygwin-binutils-20130222.patch
+	ftp://cygwin.com/pub/cygwin/64bit/x86_64-pc-cygwin-binutils-20130304.patch
 	01-w32api-sysroot.patch
 	config-rpath.patch
 "
