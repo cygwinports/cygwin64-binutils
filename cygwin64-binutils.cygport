@@ -3,15 +3,14 @@ inherit toolchain
 
 NAME="cygwin64-binutils"
 VERSION=2.23.52
-RELEASE=1
+RELEASE=4
 CATEGORY="Devel"
 SUMMARY="Binutils for Cygwin 64bit toolchain"
 HOMEPAGE="http://www.gnu.org/software/binutils/"
 SRC_DIR="binutils-${VERSION}"
 case ${VERSION} in
 *.*.[5-9][0-9])
-	SRC_URI="mirror://sourceware/binutils/snapshots/binutils.tar.bz2"
-	SRC_DIR="binutils-";;
+	SRC_URI="mirror://sourceware/binutils/snapshots/binutils-${VERSION}.tar.bz2" ;;
 *)	SRC_URI="mirror://gnu/binutils/binutils-${VERSION}.tar.bz2" ;;
 esac
 PATCH_URI="

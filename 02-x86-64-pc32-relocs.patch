@@ -1,28 +1,51 @@
-Index: bfd/coff-x86_64.c
+Index: bfd/cofflink.c
 ===================================================================
-RCS file: /cvs/src/src/bfd/coff-x86_64.c,v
-retrieving revision 1.18
-diff -u -p -r1.18 coff-x86_64.c
---- bfd/coff-x86_64.c	10 Jan 2013 20:03:52 -0000	1.18
-+++ bfd/coff-x86_64.c	29 May 2013 14:10:08 -0000
-@@ -252,9 +252,9 @@ static reloc_howto_type howto_table[] =
- 	 32,			/* bitsize */
- 	 TRUE,			/* pc_relative */
- 	 0,			/* bitpos */
--	 complain_overflow_signed, /* complain_on_overflow */
-+	 complain_overflow_dont, /* complain_on_overflow */
- 	 coff_amd64_reloc,	/* special_function */
--	 "R_X86_64_PC32",	/* name */
-+	 "R_X86_64_PC32_AMD64",	/* name */
- 	 TRUE,			/* partial_inplace */
- 	 0xffffffff,		/* src_mask */
- 	 0xffffffff,		/* dst_mask */
-@@ -442,7 +442,7 @@ static reloc_howto_type howto_table[] =
- 	 0,			/* bitpos */
- 	 complain_overflow_signed, /* complain_on_overflow */
- 	 coff_amd64_reloc,	/* special_function */
--	 "R_X86_64_PC32",	/* name */
-+	 "R_X86_64_PC32_PCRLONG",	/* name */
- 	 TRUE,			/* partial_inplace */
- 	 0xffffffff,		/* src_mask */
- 	 0xffffffff,		/* dst_mask */
+RCS file: /cvs/src/src/bfd/cofflink.c,v
+retrieving revision 1.84
+diff -c -p -r1.84 cofflink.c
+*** bfd/cofflink.c	10 Jan 2013 20:03:52 -0000	1.84
+--- bfd/cofflink.c	4 Jun 2013 12:03:23 -0000
+*************** _bfd_coff_generic_relocate_section (bfd 
+*** 3060,3065 ****
+--- 3060,3070 ----
+  	  else
+  	    {
+  	      sec = sections[symndx];
++ 
++ 	      /* If the output section has been discarded then ignore this reloc.  */
++ 	      if (sec->output_section->vma == 0)
++ 		continue;
++ 
+                val = (sec->output_section->vma
+  		     + sec->output_offset
+  		     + sym->n_value);
+*************** _bfd_coff_generic_relocate_section (bfd 
+*** 3080,3086 ****
+  		     + sec->output_section->vma
+  		     + sec->output_offset);
+  	    }
+- 
+  	  else if (h->root.type == bfd_link_hash_undefweak)
+  	    {
+                if (h->symbol_class == C_NT_WEAK && h->numaux == 1)
+--- 3085,3090 ----
+*************** _bfd_coff_generic_relocate_section (bfd 
+*** 3116,3122 ****
+                  /* This is a GNU extension.  */
+  		val = 0;
+  	    }
+- 
+  	  else if (! info->relocatable)
+  	    {
+  	      if (! ((*info->callbacks->undefined_symbol)
+--- 3120,3125 ----
+*************** _bfd_coff_generic_relocate_section (bfd 
+*** 3183,3189 ****
+  		if (name == NULL)
+  		  return FALSE;
+  	      }
+- 
+  	    if (! ((*info->callbacks->reloc_overflow)
+  		   (info, (h ? &h->root : NULL), name, howto->name,
+  		    (bfd_vma) 0, input_bfd, input_section,
+--- 3186,3191 ----
