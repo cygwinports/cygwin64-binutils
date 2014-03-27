@@ -1,21 +1,30 @@
 TOOLCHAIN_TARGET="x86_64-pc-cygwin"
-inherit toolchain
+GIT_URI="git://sourceware.org/git/binutils-gdb.git"
+inherit toolchain git
 
 NAME="cygwin64-binutils"
-VERSION=2.23.52
-RELEASE=4
+VERSION=2.24.51.20140326
+RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Binutils for Cygwin 64bit toolchain"
 HOMEPAGE="http://www.gnu.org/software/binutils/"
-SRC_DIR="binutils-${VERSION}"
-case ${VERSION} in
-*.*.[5-9][0-9])
-	SRC_URI="mirror://sourceware/binutils/snapshots/binutils-${VERSION}.tar.bz2" ;;
-*)	SRC_URI="mirror://gnu/binutils/binutils-${VERSION}.tar.bz2" ;;
-esac
+#case ${VERSION} in
+#*.*.[5-9][0-9])
+#	SRC_URI="mirror://sourceware/binutils/snapshots/binutils-${VERSION}.tar.bz2" ;;
+#*)	SRC_URI="mirror://gnu/binutils/binutils-${VERSION}.tar.bz2" ;;
+#esac
+#SRC_DIR="binutils-${VERSION}"
 PATCH_URI="
 	01-w32api-sysroot.patch
-	02-x86-64-pc32-relocs.patch
+	02-textdomain.patch
+"
+
+# https://sourceware.org/ml/binutils/2014-01/msg00341.html
+CYGCONF_ARGS="
+	--disable-gdb
+	--disable-libdecnumber
+	--disable-readline
+	--disable-sim
 "
 
 src_install() {
@@ -23,5 +32,5 @@ src_install() {
 	cyginstall
 
 	# conflicts with native binutils
-	rm -fr ${D}/usr/lib/ ${D}/usr/share/{info,locale}/
+	rm -fr ${D}/usr/lib/ ${D}/usr/share/info/
 }
