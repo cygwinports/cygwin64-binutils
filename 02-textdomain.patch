@@ -5,7 +5,7 @@
  
  # Define the identity of the package.
 - PACKAGE='bfd'
-+ PACKAGE='cygwin64-bfd'
++ PACKAGE=$target_alias-bfd
   VERSION='2.24.51'
  
  
@@ -16,7 +16,7 @@
  
  # Define the identity of the package.
 - PACKAGE=binutils
-+ PACKAGE=cygwin64-binutils
++ PACKAGE=$target_alias-binutils
   VERSION=${BFD_VERSION}
  
  
@@ -27,7 +27,7 @@
  
  # Define the identity of the package.
 - PACKAGE=gas
-+ PACKAGE=cygwin64-gas
++ PACKAGE=$target_alias-gas
   VERSION=${BFD_VERSION}
  
  
@@ -38,7 +38,7 @@
  
  # Define the identity of the package.
 - PACKAGE=gprof
-+ PACKAGE=cygwin64-gprof
++ PACKAGE=$target_alias-gprof
   VERSION=${BFD_VERSION}
  
  
@@ -49,7 +49,7 @@
  
  # Define the identity of the package.
 - PACKAGE=ld
-+ PACKAGE=cygwin64-ld
++ PACKAGE=$target_alias-ld
   VERSION=${BFD_VERSION}
  
  
@@ -60,7 +60,7 @@
  
  # Define the identity of the package.
 - PACKAGE=opcodes
-+ PACKAGE=cygwin64-opcodes
++ PACKAGE=$target_alias-opcodes
   VERSION=${BFD_VERSION}
  
  
