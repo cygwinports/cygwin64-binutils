@@ -2,8 +2,8 @@ TOOLCHAIN_TARGET="x86_64-pc-cygwin"
 inherit toolchain
 
 NAME="cygwin64-binutils"
-VERSION=2.24.90
-RELEASE=2
+VERSION=2.25
+RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Binutils for Cygwin 64bit toolchain"
 HOMEPAGE="http://www.gnu.org/software/binutils/"
@@ -14,7 +14,6 @@ case ${VERSION} in
 esac
 SRC_DIR="binutils-${VERSION}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/binutils.git/plain/binutils-2.24-corrupt-ar.patch
 	01-w32api-sysroot.patch
 	02-textdomain.patch
 "
