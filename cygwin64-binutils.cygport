@@ -2,7 +2,7 @@ TOOLCHAIN_TARGET="x86_64-pc-cygwin"
 inherit toolchain
 
 NAME="cygwin64-binutils"
-VERSION=2.25
+VERSION=2.29
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Binutils for Cygwin 64bit toolchain"
@@ -24,6 +24,7 @@ CYGCONF_ARGS="
 	--disable-libdecnumber
 	--disable-readline
 	--disable-sim
+	--with-system-zlib
 "
 
 src_install() {

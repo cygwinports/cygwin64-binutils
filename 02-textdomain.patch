@@ -6,7 +6,7 @@
  # Define the identity of the package.
 - PACKAGE='bfd'
 + PACKAGE=$target_alias-bfd
-  VERSION='2.25'
+  VERSION='2.29'
  
  
 --- origsrc/binutils-2.21.1/binutils/configure	2011-06-27 02:39:09.000000000 -0500
@@ -17,7 +17,7 @@
  # Define the identity of the package.
 - PACKAGE='binutils'
 + PACKAGE=$target_alias-binutils
-  VERSION='2.25'
+  VERSION='2.29'
  
  
 --- origsrc/binutils-2.21.1/gas/configure	2010-11-05 05:33:36.000000000 -0500
@@ -28,7 +28,7 @@
  # Define the identity of the package.
 - PACKAGE='gas'
 + PACKAGE=$target_alias-gas
-  VERSION='2.25'
+  VERSION='2.29'
  
  
 --- origsrc/binutils-2.21.1/gprof/configure	2010-11-05 05:34:01.000000000 -0500
@@ -39,7 +39,7 @@
  # Define the identity of the package.
 - PACKAGE='gprof'
 + PACKAGE=$target_alias-gprof
-  VERSION='2.25'
+  VERSION='2.29'
  
  
 --- origsrc/binutils-2.21.1/ld/configure	2011-03-16 03:37:31.000000000 -0500
@@ -50,7 +50,7 @@
  # Define the identity of the package.
 - PACKAGE='ld'
 + PACKAGE=$target_alias-ld
-  VERSION='2.25'
+  VERSION='2.29'
  
  
 --- origsrc/binutils-2.21.1/opcodes/configure	2010-11-05 05:32:32.000000000 -0500
@@ -61,6 +61,6 @@
  # Define the identity of the package.
 - PACKAGE='opcodes'
 + PACKAGE=$target_alias-opcodes
-  VERSION='2.25'
+  VERSION='2.29'
  
  
